@@ -1,5 +1,6 @@
 package com.github.borsch.listeners;
 
+import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,6 +29,8 @@ public class MongomeryExecutionListener extends AbstractTestExecutionListener {
 
     @Override
     public void beforeTestMethod(TestContext testContext) {
+        getInitFilesLocation(testContext.getTestClass())
+            .forEach(tester::setDBState);
         getInitFilesLocation(testContext.getTestMethod())
             .forEach(tester::setDBState);
     }
@@ -40,8 +43,8 @@ public class MongomeryExecutionListener extends AbstractTestExecutionListener {
         tester.dropDataBase();
     }
 
-    private static List<String> getInitFilesLocation(final Method method) {
-        final DatabaseMongoSetup mongoSetup = method.getAnnotation(DatabaseMongoSetup.class);
+    private static List<String> getInitFilesLocation(final AnnotatedElement annotatedElement) {
+        final DatabaseMongoSetup mongoSetup = annotatedElement.getAnnotation(DatabaseMongoSetup.class);
         final List<String> result = new ArrayList<>();
         if (mongoSetup != null) {
             Collections.addAll(result, mongoSetup.value());

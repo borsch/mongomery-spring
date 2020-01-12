@@ -10,9 +10,13 @@ import java.lang.annotation.Target;
 @Documented
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ ElementType.METHOD })
 public @interface ExpectedMongoDatabase {
 
+    /**
+     *
+     * @return locations of file(s) which will be used to assert database state
+     */
     String[] value();
 
 }
