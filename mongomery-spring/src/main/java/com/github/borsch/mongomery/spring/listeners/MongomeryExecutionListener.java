@@ -1,18 +1,20 @@
-package com.github.borsch.listeners;
+package com.github.borsch.mongomery.spring.listeners;
 
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.support.AbstractTestExecutionListener;
 
-import com.github.borsch.annotations.DatabaseMongoSetup;
-import com.github.borsch.annotations.ExpectedMongoDatabase;
 import com.github.borsch.mongomery.MongoDBTester;
+import com.github.borsch.mongomery.spring.types.DatabaseMongoSetup;
+import com.github.borsch.mongomery.spring.types.ExpectedMongoDatabase;
 import com.mongodb.client.MongoDatabase;
 
 public class MongomeryExecutionListener extends AbstractTestExecutionListener {
@@ -37,8 +39,14 @@ public class MongomeryExecutionListener extends AbstractTestExecutionListener {
 
     @Override
     public void afterTestMethod(TestContext testContext) {
-        getExpectedFileLocations(testContext.getTestMethod())
-            .forEach(tester::assertDBStateEquals);
+        tester.cleanIgnorePath();
+
+        getExpectedFileLocations(testContext.getTestMethod(), expectedMongoDatabase -> {
+            tester.addIgnorePaths(expectedMongoDatabase.defaultExcludeFields());
+            tester.addIgnorePaths(expectedMongoDatabase.excludeFields());
+            Arrays.asList(expectedMongoDatabase.value())
+                .forEach(tester::assertDBStateEquals);
+        });
 
         tester.dropDataBase();
     }
@@ -52,12 +60,11 @@ public class MongomeryExecutionListener extends AbstractTestExecutionListener {
         return result;
     }
 
-    private static List<String> getExpectedFileLocations(final Method method) {
+    private static void getExpectedFileLocations(final Method method, final Consumer<ExpectedMongoDatabase> consumer) {
         final ExpectedMongoDatabase mongoSetup = method.getAnnotation(ExpectedMongoDatabase.class);
-        final List<String> result = new ArrayList<>();
+
         if (mongoSetup != null) {
-            Collections.addAll(result, mongoSetup.value());
+            consumer.accept(mongoSetup);
         }
-        return result;
     }
 }

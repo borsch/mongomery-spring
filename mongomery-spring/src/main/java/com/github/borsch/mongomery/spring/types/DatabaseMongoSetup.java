@@ -1,4 +1,4 @@
-package com.github.borsch.annotations;
+package com.github.borsch.mongomery.spring.types;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

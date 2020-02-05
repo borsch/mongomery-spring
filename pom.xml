@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>mongomery-spring</module>
+        <module>mongomery-spring-example</module>
     </modules>
 
 
