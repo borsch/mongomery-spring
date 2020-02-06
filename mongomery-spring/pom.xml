@@ -4,7 +4,7 @@
 
     <groupId>com.github.borsch</groupId>
     <artifactId>mongomery-spring</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Mongomery Spring</name>
@@ -32,7 +32,7 @@
         <connection>scm:git:https://github.com/borsch/mongomery-spring.git</connection>
         <developerConnection>scm:git:https://github.com/borsch/mongomery-spring.git</developerConnection>
         <url>https://github.com/borsch/mongomery-spring.git</url>
-        <tag>mongomery-spring-0.1.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <profiles>
