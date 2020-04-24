@@ -77,7 +77,7 @@
         <maven.compiler.version>3.8.1</maven.compiler.version>
 
         <mongo.driver.version>3.7.1</mongo.driver.version>
-        <mongomery.version>0.3.2</mongomery.version>
+        <mongomery.version>0.3.3</mongomery.version>
         <spring.version>5.2.2.RELEASE</spring.version>
         <spring.data.mongo>2.2.3.RELEASE</spring.data.mongo>
     </properties>
