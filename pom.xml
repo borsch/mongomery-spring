@@ -11,6 +11,7 @@
     <modules>
         <module>mongomery-spring</module>
         <module>mongomery-spring-example</module>
+        <module>mongomery-spring-boot-example</module>
     </modules>
 
 

@@ -1,0 +1,23 @@
+{
+  "animal": [
+    {
+      "name": "storedAnimalName",
+      "age": 11,
+      "weight": 17.3,
+      "localDateTime": "$insertLocalDateTime(2020-03-04T05:06:07)",
+      "localDate": "$insertLocalDate(2222-03-06)"
+    }, {
+      "name": null,
+      "age": 11,
+      "weight": 17.3,
+      "localDateTime": null,
+      "localDate": "$insertLocalDate(2222-03-06)"
+    }, {
+      "name": 242,
+      "age": 11,
+      "weight": 221.3,
+      "localDateTime": "$insertLocalDateTime(2021-03-04T05:06:07)",
+      "localDate": "$insertLocalDate(2222-03-06)"
+    }
+  ]
+}
