@@ -76,8 +76,7 @@
 
         <maven.compiler.version>3.8.1</maven.compiler.version>
 
-        <mongo.driver.version>3.7.1</mongo.driver.version>
-        <mongomery.version>0.3.5</mongomery.version>
+        <mongomery.version>0.4.0</mongomery.version>
         <spring.version>5.2.2.RELEASE</spring.version>
         <spring.data.mongo>2.2.3.RELEASE</spring.data.mongo>
     </properties>
@@ -88,13 +87,6 @@
             <artifactId>mongomery</artifactId>
             <version>${mongomery.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-            <version>${mongo.driver.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>

@@ -30,13 +30,13 @@ public class AnimalServiceTest {
     private AnimalService animalService;
 
     @Test
-    @ExpectedMongoDatabase("expectedAfterSave.json")
+    @ExpectedMongoDatabase("/expectedAfterSave.json")
     public void shouldSaveNewAnimal() {
         animalService.saveNewAnimal("name", 10, 10.1);
     }
 
     @Test
-    @DatabaseMongoSetup("databaseSetup.json")
+    @DatabaseMongoSetup("/databaseSetup.json")
     public void shouldReadAllAnimals() {
         assertThat(animalService.getAll())
             .hasSize(1)
