@@ -33,13 +33,13 @@ class AnimalServiceTest {
     private AnimalService service;
 
     @Test
-    @ExpectedMongoDatabase("expectedAfterSave.json")
+    @ExpectedMongoDatabase("/expectedAfterSave.json")
     void shouldSaveNewAnimal() {
         service.saveNewAnimal("name", 10, 10.1);
     }
 
     @Test
-    @DatabaseMongoSetup("databaseSetup.json")
+    @DatabaseMongoSetup("/databaseSetup.json")
     void shouldReadAllAnimals() {
         assertThat(service.getAll())
             .extracting(

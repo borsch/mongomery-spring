@@ -15,6 +15,7 @@ import org.springframework.test.context.support.AbstractTestExecutionListener;
 import com.github.borsch.mongomery.MongoDBTester;
 import com.github.borsch.mongomery.spring.types.DatabaseMongoSetup;
 import com.github.borsch.mongomery.spring.types.ExpectedMongoDatabase;
+import com.github.borsch.mongomery.type.MatchingStrategyType;
 import com.mongodb.client.MongoDatabase;
 
 public class MongomeryExecutionListener extends AbstractTestExecutionListener {
@@ -26,7 +27,8 @@ public class MongomeryExecutionListener extends AbstractTestExecutionListener {
         final MongoTemplate mongoTemplate = testContext.getApplicationContext().getBean(MongoTemplate.class);
         final MongoDatabase mongoDatabase = mongoTemplate.getDb();
 
-        tester = new MongoDBTester(mongoDatabase);
+        // todo: fix
+        tester = new MongoDBTester(mongoDatabase, MatchingStrategyType.UNORDERED);
     }
 
     @Override
