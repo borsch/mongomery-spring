@@ -78,7 +78,7 @@
 
         <mongomery.version>0.4.0</mongomery.version>
         <spring.version>5.2.2.RELEASE</spring.version>
-        <spring.data.mongo>2.2.3.RELEASE</spring.data.mongo>
+        <spring.data.mongo>3.3.5</spring.data.mongo>
     </properties>
 
     <dependencies>
